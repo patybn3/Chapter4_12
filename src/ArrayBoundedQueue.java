@@ -74,5 +74,29 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
   {
     return numElements;
   }
-  
+
+  public String toString()
+  {
+    return "";
+  }
+
+  public int space()
+  {
+    return 0;
+  }
+
+  public void remove(int count)
+  {
+
+  }
+
+  public boolean swapStart()
+  {
+    return true;
+  }
+
+  public boolean swapEnd()
+  {
+    return true;
+  }
 }
