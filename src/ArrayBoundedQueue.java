@@ -14,6 +14,8 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
   protected int numElements = 0;    // number of elements in this queue
   protected int front = 0;          // index of front of queue
   protected int rear;               // index of rear of queue
+  protected int range;
+  protected T i;
 
   public ArrayBoundedQueue() 
   {
@@ -77,26 +79,79 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
 
   public String toString()
   {
-    return "";
+    String printData = "";
+
+    if (isEmpty())
+    {
+      throw new QueueUnderflowException("Print attempted on empty queue.");
+    }
+    else
+    {
+      for(int i = front; i <= rear; i++)
+      {
+        printData = printData + elements[i].toString();
+        System.out.print(elements[i] + " ");
+      }
+    }
+    return printData;
   }
 
   public int space()
   {
-    return 0;
+    System.out.println("Number of elements: " + numElements);
+    return elements.length - numElements;
   }
 
   public void remove(int count)
   {
+    if (count > numElements)
+    {
+      throw new QueueUnderflowException("Count out of bounds.");
+    }
 
+    front = (front + count) % elements.length;
+    numElements -= count;
+    System.out.println(count + " Items Removed. New List: ");
   }
 
   public boolean swapStart()
   {
+    T firstElement;
+    int calc = (front + 1) % elements.length;
+
+    System.out.println("\nFirst Two Items Swapped: ");
+
+    if(elements.length < 1)
+    {
+      return false;
+    }
+    else
+    {
+      firstElement = elements[front];
+      elements[front] = elements[calc];
+      elements[calc] = firstElement;
+    }
     return true;
   }
 
   public boolean swapEnd()
   {
+    T firstElement;
+
+    System.out.println("\nLast Two Items Swapped: ");
+
+    int calc = (rear - 1) % elements.length;
+
+    if(elements.length < 1)
+    {
+      return false;
+    }
+    else
+    {
+      firstElement = elements[rear];
+      elements[rear] = elements[calc];
+      elements[calc] = firstElement;
+    }
     return true;
   }
 }
