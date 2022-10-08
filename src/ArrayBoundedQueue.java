@@ -14,8 +14,6 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
   protected int numElements = 0;    // number of elements in this queue
   protected int front = 0;          // index of front of queue
   protected int rear;               // index of rear of queue
-  protected int range;
-  protected T i;
 
   public ArrayBoundedQueue() 
   {
@@ -87,8 +85,10 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
     }
     else
     {
+      //loops from the beginning of the queue to the end
       for(int i = front; i <= rear; i++)
       {
+        //set the list to string and print it
         printData = printData + elements[i].toString();
         System.out.print(elements[i] + " ");
       }
@@ -120,8 +120,8 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
     int calc = (front + 1) % elements.length;
 
     System.out.println("\nFirst Two Items Swapped: ");
-
-    if(elements.length < 1)
+    //if less than 2 elements, do not swap
+    if(elements.length < 2)
     {
       return false;
     }
@@ -142,7 +142,7 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
 
     int calc = (rear - 1) % elements.length;
 
-    if(elements.length < 1)
+    if(elements.length < 2)
     {
       return false;
     }

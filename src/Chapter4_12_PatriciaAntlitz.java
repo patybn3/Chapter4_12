@@ -31,10 +31,10 @@ public class Chapter4_12_PatriciaAntlitz
 
         //this loop will insert 10 numbers into the queue
         System.out.println("Numbers on This List:");
-        for(int gen = 0; gen < 10; gen++)
+        for(int i = 0; i < 10; i++)
         {
             //enqueue method will received numbers from 0 - 9
-            newList.enqueue(gen);
+            newList.enqueue(i);
         }
         //prints the list
         newList.toString();
@@ -42,7 +42,7 @@ public class Chapter4_12_PatriciaAntlitz
         System.out.println("Size: " + newList.size());
         //spaces available
         System.out.println("Empty Space: " + newList.space());
-        //
+        //will remove two items from the front
         newList.remove(2);
         newList.toString();
 
@@ -51,11 +51,11 @@ public class Chapter4_12_PatriciaAntlitz
 
         newList.swapEnd();
         newList.toString();
-
+        //tests the dequeue method
         System.out.println("\nDequeue Example: ");
         newList.dequeue();
         newList.toString();
-
+        //prints the empty space again to test
         System.out.println();
         System.out.println("Empty Space: " + newList.space());
     }
