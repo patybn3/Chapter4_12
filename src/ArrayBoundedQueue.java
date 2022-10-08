@@ -74,5 +74,84 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
   {
     return numElements;
   }
-  
+
+  public String toString()
+  {
+    String printData = "";
+
+    if (isEmpty())
+    {
+      throw new QueueUnderflowException("Print attempted on empty queue.");
+    }
+    else
+    {
+      //loops from the beginning of the queue to the end
+      for(int i = front; i <= rear; i++)
+      {
+        //set the list to string and print it
+        printData = printData + elements[i].toString();
+        System.out.print(elements[i] + " ");
+      }
+    }
+    return printData;
+  }
+
+  public int space()
+  {
+    System.out.println("Number of elements: " + numElements);
+    return elements.length - numElements;
+  }
+
+  public void remove(int count)
+  {
+    if (count > numElements)
+    {
+      throw new QueueUnderflowException("Count out of bounds.");
+    }
+
+    front = (front + count) % elements.length;
+    numElements -= count;
+    System.out.println(count + " Items Removed. New List: ");
+  }
+
+  public boolean swapStart()
+  {
+    T firstElement;
+    int calc = (front + 1) % elements.length;
+
+    System.out.println("\nFirst Two Items Swapped: ");
+    //if less than 2 elements, do not swap
+    if(elements.length < 2)
+    {
+      return false;
+    }
+    else
+    {
+      firstElement = elements[front];
+      elements[front] = elements[calc];
+      elements[calc] = firstElement;
+    }
+    return true;
+  }
+
+  public boolean swapEnd()
+  {
+    T firstElement;
+
+    System.out.println("\nLast Two Items Swapped: ");
+
+    int calc = (rear - 1) % elements.length;
+
+    if(elements.length < 2)
+    {
+      return false;
+    }
+    else
+    {
+      firstElement = elements[rear];
+      elements[rear] = elements[calc];
+      elements[calc] = firstElement;
+    }
+    return true;
+  }
 }
