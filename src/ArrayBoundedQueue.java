@@ -6,6 +6,7 @@
 // Two constructors are provided: one that creates a queue of a default
 // capacity and one that allows the calling program to specify the capacity.
 //---------------------------------------------------------------------------
+//Modified by: Patricia Antlitz
 
 public class ArrayBoundedQueue<T> implements QueueInterface<T>
 {
@@ -130,8 +131,8 @@ public class ArrayBoundedQueue<T> implements QueueInterface<T>
       firstElement = elements[front];
       elements[front] = elements[calc];
       elements[calc] = firstElement;
+      return true;
     }
-    return true;
   }
 
   public boolean swapEnd()

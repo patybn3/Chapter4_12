@@ -15,7 +15,6 @@ Class: CIS-252 Computer Science II - NECC Fall 2022
     * QueueOverflowException.java
  * The following file was partially coded by me (methods added): ArrayBoundedQueue.java
  * This is a simple main class, no user intake is necessary. All values are given by the program as a test
- * It will ask the user to enter the numbers to form the stack
 */
 
 /**
